@@ -1,0 +1,53 @@
+############################ MAD RPG 0.0 ###############################
+
+Classes:
+
+###############################################################################
+
+  -Personnage:
+
+    attributs:
+
+      nom - chaine de caractére
+      attaque - entier
+      vie - entier
+
+      positionX - entier
+      positionY - entier
+
+    Methodes:
+
+      attaquer ( entier attaquer) - void
+      recevoirDegats ( entier Degats) - void
+      enVie() - booleen
+      info() - void
+      seDeplacer(Map map) - void
+
+###############################################################################
+
+  -Map:
+
+    Attributs:
+
+      carte - tableau de caracteres a deux dimentions
+      tailleX - entier
+      tailleY - entier
+
+    Methodes:
+
+      initialiser() - void
+      afficher() - void
+      caseValide(entier X, entier Y) - booleen
+
+###############################################################################
+  -Arme:
+
+    Attributs:
+
+      degats - entier
+      nom - chaine de caracteres
+
+    Methodes:
+
+
+###############################################################################      
