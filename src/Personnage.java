@@ -1,11 +1,12 @@
 /*
  * Autor : Alex tomasia
  * Creation: 22/09/2017
- * Last modification: 01/10/2017
+ * Last modification: 02/10/2017
  */
 
 
 import java.util.Scanner;
+import java.util.Random;
 
 public class Personnage {
 	
@@ -95,9 +96,10 @@ public class Personnage {
 	
 	public void attaquer(Personnage cible) {
 		
+		Random rand = new Random();
 		System.out.print("\n--"+this.nom+" attaque "+ cible.getNom()+"--\n");
-		
-		cible.recevoirDegats(this.getAttaque());
+			
+		cible.recevoirDegats(this.getAttaque()+ rand.nextInt(9) + 1);
 		
 	}
 	

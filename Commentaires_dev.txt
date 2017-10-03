@@ -1,0 +1,37 @@
+############################ MAD RPG 0.0 ###############################
+
+Le Jeu:
+
+  Le jeu sera basé sur le principe d'un rpg melangé a un rogue like. Au debut
+  on crée son personnage, on arrive sur une map dans laquelle on pourra se
+  déplacer d'une case a chaque tour. A chaque fois que le joueur arrivera sur
+  une nouvelle case, un evenement aléatoire se déclenchera ( combat , script
+  avec des choix, auberge...etc). Pour l'instant le but sera de trouver et de
+  battre le boss final.
+
+Le Joueur:
+
+  Le joueur sera au controle de son personnage qu'il aura crée précédement.
+  celui si disposera d'equipements (arme, casque, armure, bottes, gants), et
+  d'objets divers ( objets qui changerons son statut ou celui de l'ennemi,
+  objets qui lui permettrons de ragagner de la vie ou du mana...etc).
+
+
+
+
+Avancement:
+
+  Fait:
+
+
+
+  A faire:
+    -possibilité pour un personnage d'avoir une arme:
+      crée une classe Arme qui aura comme attributs les degats de l'arme
+      et son nom
+
+    -déclenchement d'evenements en se déplacement sur la map:
+    -ajout de l'aléatoire dans l'attaque des personnages:
+    -Possibilité de fuir le combat:
+    -ajout d'un inventaire:
+    -ajout de Classes differentes:
