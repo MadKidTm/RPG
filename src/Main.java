@@ -1,5 +1,5 @@
 /*
- * Autor : character tomasia
+ * Autor : personnage tomasia
  * Creation: 22/09/2017
  * Last modification: 02/10/2017
  */
@@ -11,13 +11,13 @@ public class Main {
 	public static void main(String[] args) {
 		
 		
-		Personnage character = new Personnage();
+		Personnage personnage = new Personnage();
 		Map map = new Map();
 		Personnage monstre = new Personnage("vil goblin", 60, 1);		
-		map.setCarte('X', character.getPositionX(), character.getPositionY());
+		map.setCarte('X', personnage.getPositionX(), personnage.getPositionY());
 		
-		Action(character,map);
-		combat(character,monstre);
+		Action(personnage,map);
+		combat(personnage,monstre);
 	
 		
 	}
