@@ -1,0 +1,10 @@
+1 . git pull ( recuperer la derniére version du projet ) a faire en commencant a travailler et avant chaque push
+2 . git status ( voir les fichier modifié : rouge = pas ajouter au commit / vert = ajouter au commit )
+3 . git add nomFichier1 nomFichier2 ( ajoute les fichier selectionné ) 
+ou git add all ( ajoute tout les fichiers )
+
+4 . git commit -m "message" ( commit les changements effectué avec un message ) = a faire apres chaque changement notable
+5 . git push ( fait remonter le projet et ses modifications dans le repository)
+
+6 . git log ( permet de voir l'historique des commits )
+ 
