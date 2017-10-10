@@ -12,14 +12,17 @@ public class Main {
 		
 		
 		Personnage personnage = new Personnage();
-		Map map = new Map();
-		Personnage monstre = new Personnage("vil goblin", 60, 1);		
+		Map map = new Map();		
 		map.setCarte('X', personnage.getPositionX(), personnage.getPositionY());
 		
-		Action(personnage,map);
-		combat(personnage,monstre);
-	
 		
+		
+		while(personnage.enVie()) {
+			
+			Action(personnage,map);
+			System.out.print(personnage.getPositionX() + " " + personnage.getPositionY());
+			Evenement(personnage,map);
+		}	
 	}
 	
 	//##################################################################################################
@@ -62,8 +65,31 @@ public class Main {
 		perso.seDeplacer(map);
 		map.setCarte('X', perso.getPositionX(), perso.getPositionY());
 		map.afficher();
+		
 	}
 	
+	
+	static void Evenement(Personnage perso, Map map) {
+		
+		char event = map.getEvenement(perso.getPositionX(), perso.getPositionY());
+		
+		if (event == 'C') {
+			
+			Personnage monstre = new Personnage("vil gobelin", 20, 1);
+			map.setEvenement(' ', perso.getPositionX(), perso.getPositionY());
+			combat(perso, monstre);
+			
+		}
+		else if (event == 'E') {
+			System.out.print("Vous arrivez au niveau d'une clairiere, l'atmostphere y est "
+					+ "bien calme, et quelques animaux sauvages vous observent au loin...");
+		}
+		else
+			System.out.print("rien de particulier dans cette zone");
+			
+	}
+	
+	// fonction qui va gerer le menu action permettant au joueur de choisir son action.
 	static void Action(Personnage joueur, Map map) {
 		Scanner sc = new Scanner(System.in);
 		byte reponse = 0;

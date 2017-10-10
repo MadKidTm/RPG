@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /*
  * Autor : Alex tomasia
  * Creation: 22/09/2017
@@ -8,6 +10,7 @@
 public class Map {
 	
 	private char carte[][];
+	private char evenement[][];
 	private int tailleX;
 	private int tailleY;
 	
@@ -16,6 +19,7 @@ public class Map {
 		tailleY=6;
 		tailleX=8;	
 		carte = new char[tailleY][tailleX];
+		evenement = new char[tailleY][tailleX];
 		initialiser();
 		
 	}
@@ -45,6 +49,11 @@ public class Map {
 		return carte[Y][X];
 	}
 	
+	public char getEvenement(int X, int Y){
+		
+		return evenement[Y-1][X-1];
+	}
+	
 	public void setTailleX(int valeurTaille) {
 		
 		tailleX = valeurTaille;
@@ -67,14 +76,38 @@ public class Map {
 		
 	}
 	
+	public void setEvenement(char caractere, int X, int Y) {
+		
+		if (X > tailleX || Y > tailleY || X <= 0 || Y < 0 ) {
+			
+			System.out.print("OutOfBoundsErrorOnSetEvenement");
+			
+		}else
+			evenement[Y-1][X-1] = caractere;
+		
+	}
+	
 	//##################################################################################################//
 	
 	private void initialiser() {
+		Random rand = new Random();
+		int valeurAleatoire;
 		
 		for (int i=0 ; i<tailleY; i++) {
 			
 			for (int j=0; j < tailleX; j++) {				
-				carte[i][j] = ' ';			
+				carte[i][j] = ' ';
+				
+				valeurAleatoire = rand.nextInt(9) + 1;
+				
+				if (valeurAleatoire <= 3 ) {
+					evenement[i][j] = 'C';
+				}
+				else if (valeurAleatoire > 4 && valeurAleatoire <= 8) {
+					evenement[i][j] = 'E';
+				}
+				else
+					evenement[i][j] = ' '; 
 			}		
 		}
 	}
@@ -86,6 +119,7 @@ public class Map {
 			
 			for (int j=0; j < tailleX; j++) {
 				System.out.print("[");
+				System.out.print(evenement[i][j]);
 				System.out.print(carte[i][j]);
 				System.out.print("]");
 			}
