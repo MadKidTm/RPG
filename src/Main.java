@@ -1,13 +1,14 @@
 /*
  * Autor : personnage tomasia
  * Creation: 22/09/2017
- * Last modification: 02/10/2017
+ * Last modification: 10/10/2017
  */
 
 import java.util.Scanner; 
 
 public class Main {
 
+	// programme principal ou vont se dérouler les differentes phases de jeu
 	public static void main(String[] args) {
 		
 		
@@ -20,19 +21,21 @@ public class Main {
 		while(personnage.enVie()) {
 			
 			Action(personnage,map);
-			System.out.print(personnage.getPositionX() + " " + personnage.getPositionY());
 			Evenement(personnage,map);
 		}	
 	}
 	
 	//##################################################################################################
 	
+	//Fonction qui gere le déroulement d'un combat. celle ci prend en paramettre deux objet de type personnage ( le joueur, et son ennemi)
 	static void  combat(Personnage joueur, Personnage monstre) {
+		//initialisation de mes variables
 		int reponse = 0;
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.print("\n--"+" Debut du combat "+"--\n");
 		
+		//Le combat continue tant que le joueur ou le monstre sont en vie
 		while (joueur.enVie() && monstre.enVie() ) {
 			joueur.info();
 			monstre.info();
@@ -58,6 +61,8 @@ public class Main {
 		System.out.print("\n--"+" Fin du combat "+"--\n");	
 	}
 	
+	/*Cette fonction gére les déplacement du joueur sur la map, celle ci prend en parametre un objet 
+	de type personnage ( le joueur) et un objet de type map ( la carte du jeu)*/
 	static void Deplacement(Personnage perso, Map map) {
 		
 		map.afficher();
@@ -68,7 +73,9 @@ public class Main {
 		
 	}
 	
-	
+	/*Cette fonction gere le déclenchement des événement lorsque le joueur se déplace sur la map, 
+	 * celle ci prend en paramétre un objet de type personnage ( le joueur ) et un objet de type Map ( la carte du jeu)
+	 */
 	static void Evenement(Personnage perso, Map map) {
 		
 		char event = map.getEvenement(perso.getPositionX(), perso.getPositionY());
@@ -89,7 +96,9 @@ public class Main {
 			
 	}
 	
-	// fonction qui va gerer le menu action permettant au joueur de choisir son action.
+	/* fonction qui va gerer le menu permettant au joueur de choisir son action, 
+	 * celle ci prend en paramétre un objet de type personnage ( le joueur ) et un objet de type Map ( la carte du jeu) 
+	 */
 	static void Action(Personnage joueur, Map map) {
 		Scanner sc = new Scanner(System.in);
 		byte reponse = 0;

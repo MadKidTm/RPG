@@ -1,8 +1,11 @@
 /*
  * Autor : Alex tomasia
  * Creation: 22/09/2017
- * Last modification: 02/10/2017
+ * Last modification: 10/10/2017
+ * 
+ * Classe personnage
  */
+//
 
 
 import java.util.Scanner;
@@ -10,17 +13,17 @@ import java.util.Random;
 
 public class Personnage {
 	
-	
+	//Attributs
 	private String nom;
 	private int vie;
 	private int attaque;
 	
-	//Déplacement
+		//Déplacement
 	private int positionX;
 	private int positionY;
 	
 	
-	
+	//Constructeurs par default
 	Personnage(){
 		Scanner sc = new Scanner(System.in);
 		
@@ -29,11 +32,12 @@ public class Personnage {
 		
 		vie = 10;
 		attaque = 5;
-		positionX = 1;
-		positionY=1;
+		positionX = 0;
+		positionY=0;
 			
 	}
 	
+	//Constructeurs surchargé
 	Personnage(String valeurNom, int valeurVie, int valeurAttaque)
 	{
 		nom = valeurNom;
@@ -44,6 +48,7 @@ public class Personnage {
 	
 	
 	//##################################################################################################//
+	//Accesseurs
 	
 	public String getNom() {
 		
@@ -93,7 +98,7 @@ public class Personnage {
 	
 	//##################################################################################################//
 	
-	
+	//permet a un personnage d'attaquer une cible. la cible est un objet de type personnage
 	public void attaquer(Personnage cible) {
 		
 		Random rand = new Random();
@@ -103,6 +108,7 @@ public class Personnage {
 		
 	}
 	
+	//permet a un personnage de recevoir des degats
 	public void recevoirDegats(int nbrDegats) {
 		
 		System.out.print("\n--"+this.nom+" reçois "+nbrDegats+" pts de dommage"+"--\n");
@@ -115,6 +121,7 @@ public class Personnage {
 		}	
 	}
 	
+	//Fonction qui renvoie true si le personnage est en vie, ou false si il ne l'est pas
 	public boolean enVie() {
 		
 		if (this.vie > 0)
@@ -123,12 +130,14 @@ public class Personnage {
 			return false;		
 	}
 	
+	//Affiche des infos sur le personnage
 	public void info() {
 		
 		System.out.print("\n~~"+"Nom : "+this.nom+"\n");
 		System.out.print("~~"+"Vie : "+this.vie+"\n");
 	}
 	
+	//Permet au personnage de se déplacer sur la carte du jeu. cette procédure prend en parametre un objet de type Map
 	public void seDeplacer(Map map) {
 		Scanner sc = new Scanner(System.in);
 		byte reponse = 0;
@@ -137,7 +146,7 @@ public class Personnage {
 		while ( reponse == 0 ) {
 			
 			System.out.print("\n--"+"Déplacement"+"--\n");
-			if(this.positionY != 1 ) {
+			if(this.positionY != 0 ) {
 				System.out.print("\n"+"1.Haut"+"\n");
 				haut = true;
 			}
@@ -149,7 +158,7 @@ public class Personnage {
 				System.out.print("3.Bas"+"\n");
 				bas = true;
 			}
-			if(this.positionX != 1) {
+			if(this.positionX != 0) {
 				System.out.print("4.Gauche"+"\n");
 				gauche = true;
 			}

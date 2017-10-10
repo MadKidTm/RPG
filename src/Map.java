@@ -3,17 +3,19 @@ import java.util.Random;
 /*
  * Autor : Alex tomasia
  * Creation: 22/09/2017
- * Last modification: 02/10/2017
+ * Last modification: 10/10/2017
  */
 
 
 public class Map {
 	
+	//Attributs
 	private char carte[][];
 	private char evenement[][];
 	private int tailleX;
 	private int tailleY;
 	
+	//Constructeur par defaut
 	Map(){
 		
 		tailleY=6;
@@ -24,6 +26,7 @@ public class Map {
 		
 	}
 	
+	//Constructeur surchargé
 	Map(int lignes, int colonnes) {
 		
 		tailleX = colonnes;
@@ -33,7 +36,7 @@ public class Map {
 	}
 
 	//##################################################################################################//
-	
+	//Accesseurs
 	public int getTailleX() {
 		
 		return tailleX;
@@ -51,7 +54,7 @@ public class Map {
 	
 	public char getEvenement(int X, int Y){
 		
-		return evenement[Y-1][X-1];
+		return evenement[Y][X];
 	}
 	
 	public void setTailleX(int valeurTaille) {
@@ -67,28 +70,30 @@ public class Map {
 	public void setCarte(char caractere, int X, int Y) {
 		
 		
-		if (X > tailleX || Y > tailleY || X <= 0 || Y < 0 ) {
+		if (X > tailleX || Y > tailleY || X < 0 || Y < 0 ) {
 			
 			System.out.print("OutOfBoundsErrorOnSetCarte");
 			
 		}else
-			carte[Y-1][X-1] = caractere;
+			carte[Y][X] = caractere;
 		
 	}
 	
 	public void setEvenement(char caractere, int X, int Y) {
 		
-		if (X > tailleX || Y > tailleY || X <= 0 || Y < 0 ) {
+		if (X > tailleX || Y > tailleY || X < 0 || Y < 0 ) {
 			
 			System.out.print("OutOfBoundsErrorOnSetEvenement");
 			
 		}else
-			evenement[Y-1][X-1] = caractere;
+			evenement[Y][X] = caractere;
 		
 	}
 	
 	//##################################################################################################//
+	//Methodes
 	
+	//initialise la carte de jeu ainsi que la carte des evenements
 	private void initialiser() {
 		Random rand = new Random();
 		int valeurAleatoire;
@@ -103,7 +108,7 @@ public class Map {
 				if (valeurAleatoire <= 3 ) {
 					evenement[i][j] = 'C';
 				}
-				else if (valeurAleatoire > 4 && valeurAleatoire <= 8) {
+				else if (valeurAleatoire > 4 && valeurAleatoire <= 7) {
 					evenement[i][j] = 'E';
 				}
 				else
@@ -112,6 +117,7 @@ public class Map {
 		}
 	}
 	
+	//Affiche la carte de jeu
 	public void afficher() {
 		
 		System.out.print("\n ### MAP ### \n");
@@ -126,6 +132,8 @@ public class Map {
 			System.out.print("\n");
 		}
 	}	
+	
+	// fonction qui renvoie true si la case est valide ou false si elle ne l'est pas
 	
 	public boolean caseValide(int X, int Y) {
 		
