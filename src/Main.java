@@ -16,8 +16,7 @@ public class Main {
 		Map map = new Map();		
 		map.setCarte('X', personnage.getPositionX(), personnage.getPositionY());
 		
-		
-		
+		//Boucle principale du jeu
 		while(personnage.enVie()) {
 			
 			Action(personnage,map);
@@ -88,10 +87,15 @@ public class Main {
 			
 		}
 		else if (event == 'E') {
-			System.out.print("Vous arrivez au niveau d'une clairiere, l'atmostphere y est "
-					+ "bien calme, et quelques animaux sauvages vous observent au loin...");
+			System.out.print("\nVous arrivez au niveau d'une clairiere, l'atmostphere y est "
+					+ "bien calme, et quelques animaux sauvages vous observent au loin...\n");
 		}
-		else
+		else if(event == 'M') {
+			System.out.print("\nVous arrivez devant une magnifique devanture de magasin... Malheureusement celui ci a l'air fermé. \n"
+					+ "vous vous approchez de la porte. Sur celle ci vous pouvez y lire un mot.\n"
+					+ "\"En construction. Revenez apres la prochaine mise a jour \"\n");
+			
+		}else
 			System.out.print("rien de particulier dans cette zone");
 			
 	}

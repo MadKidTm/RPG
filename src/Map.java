@@ -111,7 +111,9 @@ public class Map {
 				else if (valeurAleatoire > 4 && valeurAleatoire <= 7) {
 					evenement[i][j] = 'E';
 				}
-				else
+				else if(valeurAleatoire > 7 && valeurAleatoire < 9){
+					evenement[i][j] = 'M';
+				}else
 					evenement[i][j] = ' '; 
 			}		
 		}

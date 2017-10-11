@@ -22,6 +22,12 @@ public class Personnage {
 	private int positionX;
 	private int positionY;
 	
+		//Caractéristiques qui vont influer sur les capacités du personnage
+	private int force;
+	private int agilite;
+	private int dexterite;
+	private int resistance;
+	
 	
 	//Constructeurs par default
 	Personnage(){
@@ -30,11 +36,16 @@ public class Personnage {
 		System.out.print("\n"+"Comment vous appelez vous?"+"\n");
 		nom=sc.nextLine();
 		
-		vie = 10;
+		vie = 40;
 		attaque = 5;
 		positionX = 0;
 		positionY=0;
-			
+		
+		force = 0;
+		agilite = 0;
+		dexterite = 0;
+		resistance = 0;
+				
 	}
 	
 	//Constructeurs surchargé
@@ -43,6 +54,11 @@ public class Personnage {
 		nom = valeurNom;
 		vie = valeurVie;
 		attaque= valeurAttaque;
+		
+	}
+	
+	Personnage(String valeurNom, int valeurVie, int valeurAttaque, int valeurForce, int valeurAgilite, int valeurDexterité, int valeurResistance)
+	{
 		
 	}
 	
