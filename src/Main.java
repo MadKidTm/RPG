@@ -52,11 +52,11 @@ public class Main {
 			reponse = sc.nextInt();
 			
 			while (reponse != 1) {
-				
+					
 				System.out.print("\n"+"Commande incorrecte"+"\n"+"1.Attaquer"+"\n");
 				reponse = sc.nextInt();
 			}
-			
+				
 			joueur.attaquer(monstre);
 			
 			if (monstre.enVie())
@@ -93,7 +93,7 @@ public class Main {
 		
 		if (event == 'C') {
 			
-			Personnage monstre = new Personnage("vil gobelin", 20, 40);
+			Personnage monstre = new Personnage("vil gobelin", 20, 1);
 			map.setEvenement(' ', perso.getPositionX(), perso.getPositionY());
 			combat(perso, monstre);
 			

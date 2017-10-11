@@ -122,10 +122,16 @@ public class Personnage {
 	//permet a un personnage d'attaquer une cible. la cible est un objet de type personnage
 	public void attaquer(Personnage cible) {
 		
-		Random rand = new Random();
 		System.out.print("\n--"+this.nom+" attaque "+ cible.getNom()+"--\n");
+		
+		//Si la cible n'esquive pas
+		if (!cible.esquive()) {
 			
-		cible.recevoirDegats(this.getAttaque()+ rand.nextInt(9) + 1);
+			Random rand = new Random();	
+			cible.recevoirDegats(this.getAttaque()+ rand.nextInt(9) + 1);
+			
+		}else//Si la cible esquive
+			System.out.print("\n-- "+cible.getNom()+" esquive l'attaque"+" --\n");
 		
 	}
 	
@@ -147,10 +153,19 @@ public class Personnage {
 		
 		if (this.vie > 0)
 			return true;
-		else {
-			System.out.print("\n--"+this.getNom()+" est mort "+"--\n");
+		else 
 			return false;
-		}
+		
+	}
+	
+	public boolean esquive() {
+		
+		Random rand = new Random();
+		
+		if(rand.nextInt(4)+1 > 2)
+			return false;
+		else
+			return true;
 	}
 	
 	//Affiche des infos sur le personnage
