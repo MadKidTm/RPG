@@ -17,6 +17,8 @@ public class Personnage {
 	private String nom;
 	private int vie;
 	private int attaque;
+	private int niveau;
+	private int experience;
 	
 		//Déplacement
 	private int positionX;
@@ -38,6 +40,9 @@ public class Personnage {
 		
 		vie = 40;
 		attaque = 5;
+		niveau = 1;
+		experience = 0;
+		
 		positionX = 0;
 		positionY=0;
 		
@@ -48,7 +53,7 @@ public class Personnage {
 				
 	}
 	
-	//Constructeurs surchargé
+	//Constructeurs surchargé (Pour les monstres)
 	Personnage(String valeurNom, int valeurVie, int valeurAttaque)
 	{
 		nom = valeurNom;
@@ -142,8 +147,10 @@ public class Personnage {
 		
 		if (this.vie > 0)
 			return true;
-		else 
-			return false;		
+		else {
+			System.out.print("\n--"+this.getNom()+" est mort "+"--\n");
+			return false;
+		}
 	}
 	
 	//Affiche des infos sur le personnage

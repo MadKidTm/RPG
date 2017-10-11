@@ -11,17 +11,26 @@ public class Main {
 	// programme principal ou vont se dérouler les differentes phases de jeu
 	public static void main(String[] args) {
 		
+		Scanner pause = new Scanner(System.in);
+		
+		System.out.print("Bienvenue dans MAD-SKIP RPG Version 0.1 \n");
+		System.out.print("Appuyer sur une touche....");
+		pause.nextLine();
+		
 		
 		Personnage personnage = new Personnage();
 		Map map = new Map();		
 		map.setCarte('X', personnage.getPositionX(), personnage.getPositionY());
 		
+			
 		//Boucle principale du jeu
 		while(personnage.enVie()) {
 			
 			Action(personnage,map);
 			Evenement(personnage,map);
-		}	
+		}
+		
+		System.out.print("\n--"+" Game Over "+"--\n");
 	}
 	
 	//##################################################################################################
@@ -57,6 +66,9 @@ public class Main {
 			
 		}
 		
+		if (!joueur.enVie())
+			System.out.print("\n--"+joueur.getNom()+" est mort "+"--\n");
+		
 		System.out.print("\n--"+" Fin du combat "+"--\n");	
 	}
 	
@@ -81,7 +93,7 @@ public class Main {
 		
 		if (event == 'C') {
 			
-			Personnage monstre = new Personnage("vil gobelin", 20, 1);
+			Personnage monstre = new Personnage("vil gobelin", 20, 40);
 			map.setEvenement(' ', perso.getPositionX(), perso.getPositionY());
 			combat(perso, monstre);
 			
@@ -95,6 +107,11 @@ public class Main {
 					+ "vous vous approchez de la porte. Sur celle ci vous pouvez y lire un mot.\n"
 					+ "\"En construction. Revenez apres la prochaine mise a jour \"\n");
 			
+		}else if(event == 'R') {
+			System.out.print("\nVous arrivez a une auberge, vous decider d'y passer la nuit pour vous reposer un peu...\n");
+			
+			perso.setVie(40);
+				
 		}else
 			System.out.print("rien de particulier dans cette zone");
 			

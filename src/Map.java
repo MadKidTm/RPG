@@ -112,7 +112,7 @@ public class Map {
 					evenement[i][j] = 'E';
 				}
 				else if(valeurAleatoire > 7 && valeurAleatoire < 9){
-					evenement[i][j] = 'M';
+					evenement[i][j] = 'R';
 				}else
 					evenement[i][j] = ' '; 
 			}		
@@ -127,7 +127,6 @@ public class Map {
 			
 			for (int j=0; j < tailleX; j++) {
 				System.out.print("[");
-				System.out.print(evenement[i][j]);
 				System.out.print(carte[i][j]);
 				System.out.print("]");
 			}
