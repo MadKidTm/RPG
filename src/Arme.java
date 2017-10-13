@@ -8,6 +8,31 @@ public class Arme {
 	private int degats;
 	private String type; //type d'arme
 	
+	//constructeurs
+	public Arme() {
+		nom = "pantoufle usée";
+		categorie = ".";
+		degats = 8;
+		type = ".";
+	}
+	public Arme(String valeurnom, String valeurcategorie, int valeurdegats, String valeurtype) {
+		
+		nom = valeurnom;
+		categorie = valeurcategorie;
+		degats = valeurdegats;
+		type=valeurtype;
+		
+	}
+	
+	public Arme(String valeurNom, int valeurDegats) {
+		
+		nom= valeurNom;
+		categorie = "test";
+		degats = valeurDegats;
+		type = "null";
+	}
+
+
 
 	public String getNom() {
 		return nom;
@@ -47,6 +72,8 @@ public class Arme {
 		this.type = type;
 	}
 	
+}
+	
 	/* J'imagine que ici c'est ton constructeur. C'est bien mais il y a quelques regles quand tu crée une classe.
 	 * -Tout d'abord il te faut toujours un constructeur par defaut ( c'est a dire une methode qui va s'appeler exactement comme ta classe mais qui ne va prendre aucun
 	 * paramétre ) Ex: public Arme()
@@ -78,9 +105,3 @@ public class Arme {
 	 * 
 	 * Sinan bien de faire commencer le perso avec une épée en bois mdrr, c'est mieux que les rpg ou tu commence avec une casserole ou quoi :P.
 	 */
-	public Arme(String string, String string2, int i, String string3) {
-		
-	}
-
-	Arme arme = new Arme("épée en bois","basique", 5, "bois"); //exemple pour une épée basique
-}

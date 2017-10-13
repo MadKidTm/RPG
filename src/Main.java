@@ -14,7 +14,9 @@ public class Main {
 		Scanner pause = new Scanner(System.in);
 		
 		System.out.print("Bienvenue dans MAD-SKIP RPG Version 0.1 \n");
-		System.out.print("Appuyer sur une touche....");
+
+		System.out.print("Appuyer sur la touche entrée....");
+
 		pause.nextLine();
 		
 		
@@ -47,24 +49,44 @@ public class Main {
 		while (joueur.enVie() && monstre.enVie() ) {
 			joueur.info();
 			monstre.info();
-			System.out.print("\n**"+" Action "+"**\n");
+			System.out.print("\n**"+" Que souhaitez vous faire ? "+"**\n");
 			System.out.print("\n"+"1.Attaquer"+"\n");
+			System.out.print("2.Boire potion"+"\n");
 			reponse = sc.nextInt();
 			
-			while (reponse != 1) {
-					
-				System.out.print("\n"+"Commande incorrecte"+"\n"+"1.Attaquer"+"\n");
+
+			while (reponse < 1 && reponse > 2) {
+				
+				System.out.print("\n"+"Commande incorrecte"+"\n"+"1.Attaquer"+"\n" +"2.Utiliser Arme"+"\n");
 				reponse = sc.nextInt();
 			}
-				
-			joueur.attaquer(monstre);
+			
+			switch (reponse)
+			{
+				case 1:
+					joueur.attaquer(monstre);
+					break;
+				case 2:
+					joueur.boirePotion();
+					break;
+					
+				default:
+					System.out.print("\n"+"Commande incorrecte"+"\n"+"1.Attaquer"+"\n" +"2.Utiliser Arme"+"\n");
+			}	
+			
+
 			
 			if (monstre.enVie())
 				monstre.attaquer(joueur);
 			else
 				System.out.print("\n--"+monstre.getNom()+" est mort "+"--\n");
-			
 		}
+			
+			
+		
+		
+		if (!joueur.enVie())
+			System.out.print("\n--"+joueur.getNom()+" est mort "+"--\n");
 		
 		if (!joueur.enVie())
 			System.out.print("\n--"+joueur.getNom()+" est mort "+"--\n");
@@ -93,7 +115,7 @@ public class Main {
 		
 		if (event == 'C') {
 			
-			Personnage monstre = new Personnage("vil gobelin", 20, 1);
+			Personnage monstre = new Personnage("vil gobelin", 20, 2);
 			map.setEvenement(' ', perso.getPositionX(), perso.getPositionY());
 			combat(perso, monstre);
 			
@@ -126,7 +148,7 @@ public class Main {
 		
 		while(reponse == 0) {
 			
-			System.out.print("\n--"+"Action"+"--\n");
+			System.out.print("\n--"+"Que souhaitez-vous faire ?"+"--\n");
 			System.out.print("1.Se deplacer"+"\n");
 			System.out.print("2.Inventaire"+"\n");
 			System.out.print("3."+"\n");

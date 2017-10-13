@@ -19,6 +19,8 @@ public class Personnage {
 	private int attaque;
 	private int niveau;
 	private int experience;
+	private Arme arme;
+
 	
 		//Déplacement
 	private int positionX;
@@ -50,15 +52,18 @@ public class Personnage {
 		agilite = 0;
 		dexterite = 0;
 		resistance = 0;
-				
+	
+		arme = new Arme();
 	}
 	
+
 	//Constructeurs surchargé (Pour les monstres)
 	Personnage(String valeurNom, int valeurVie, int valeurAttaque)
 	{
 		nom = valeurNom;
 		vie = valeurVie;
 		attaque= valeurAttaque;
+		arme = new Arme("Griffe", 5);
 		
 	}
 	
@@ -67,6 +72,7 @@ public class Personnage {
 		
 	}
 	
+	Arme pantoufle = new Arme("Pantoufle usée","basique", 8, "arme");
 	
 	//##################################################################################################//
 	//Accesseurs
@@ -117,9 +123,25 @@ public class Personnage {
 		positionY = Y;
 	}
 	
-	//##################################################################################################//
+	public Arme getArme() {
+		
+		return arme;
+	}
+
+	public void setArme(Arme arme) {
+		
+		this.arme = arme;
+	}
+
 	
+	//##################################################################################################//
+	//Methodes
 	//permet a un personnage d'attaquer une cible. la cible est un objet de type personnage
+	
+	public void boirePotion() {
+		this.setVie(this.getVie() + 10);
+	}
+	
 	public void attaquer(Personnage cible) {
 		
 		System.out.print("\n--"+this.nom+" attaque "+ cible.getNom()+"--\n");
@@ -132,8 +154,10 @@ public class Personnage {
 			
 		}else//Si la cible esquive
 			System.out.print("\n-- "+cible.getNom()+" esquive l'attaque"+" --\n");
+
 		
 	}
+	
 	
 	//permet a un personnage de recevoir des degats
 	public void recevoirDegats(int nbrDegats) {
@@ -148,11 +172,13 @@ public class Personnage {
 		}	
 	}
 	
+
 	//Fonction qui renvoie true si le personnage est en vie, ou false si il ne l'est pas
 	public boolean enVie() {
 		
 		if (this.vie > 0)
 			return true;
+
 		else 
 			return false;
 		
@@ -243,4 +269,13 @@ public class Personnage {
 			}
 		}
 	}
+	
+	
+
+
+
+
+
+
+
 }
