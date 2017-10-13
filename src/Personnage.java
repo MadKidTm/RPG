@@ -16,6 +16,7 @@ public class Personnage {
 	//Attributs
 	private String nom;
 	private int vie;
+	private int vieMax;
 	private int attaque;
 	private int niveau;
 	private int experience;
@@ -40,7 +41,9 @@ public class Personnage {
 		System.out.print("\n"+"Comment vous appelez vous?"+"\n");
 		nom=sc.nextLine();
 		
-		vie = 40;
+		vieMax= 40;
+		vie = vieMax;
+		
 		attaque = 5;
 		niveau = 1;
 		experience = 0;
@@ -94,6 +97,9 @@ public class Personnage {
 	
 	public void setVie(int valeurVie) {
 		
+		if( valeurVie > vieMax)
+			valeurVie = vieMax;
+		
 		vie = valeurVie;
 	}
 	
@@ -139,7 +145,7 @@ public class Personnage {
 	//permet a un personnage d'attaquer une cible. la cible est un objet de type personnage
 	
 	public void boirePotion() {
-		this.setVie(this.getVie() + 10);
+		this.setVie(this.getVie() + 20);
 	}
 	
 	public void attaquer(Personnage cible) {
@@ -150,7 +156,7 @@ public class Personnage {
 		if (!cible.esquive()) {
 			
 			Random rand = new Random();	
-			cible.recevoirDegats(this.getAttaque()+ rand.nextInt(9) + 1);
+			cible.recevoirDegats(this.getAttaque()+ rand.nextInt(5));
 			
 		}else//Si la cible esquive
 			System.out.print("\n-- "+cible.getNom()+" esquive l'attaque"+" --\n");
@@ -188,7 +194,7 @@ public class Personnage {
 		
 		Random rand = new Random();
 		
-		if(rand.nextInt(4)+1 > 2)
+		if(rand.nextInt(19)+1 > 2)
 			return false;
 		else
 			return true;

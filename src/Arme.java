@@ -12,7 +12,7 @@ public class Arme {
 	public Arme() {
 		nom = "pantoufle usée";
 		categorie = ".";
-		degats = 8;
+		degats = 10;
 		type = ".";
 	}
 	public Arme(String valeurnom, String valeurcategorie, int valeurdegats, String valeurtype) {
