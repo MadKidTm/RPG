@@ -40,7 +40,7 @@ public class Main {
 	//Fonction qui gere le déroulement d'un combat. celle ci prend en paramettre deux objet de type personnage ( le joueur, et son ennemi)
 	static void  combat(Personnage joueur, Personnage monstre) {
 		//initialisation de mes variables
-		int reponse = 0;
+		int reponse;
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.print("\n--"+" Debut du combat "+"--\n");
@@ -54,10 +54,16 @@ public class Main {
 			System.out.print("2.Boire potion"+"\n");
 			reponse = sc.nextInt();
 			
+<<<<<<< Updated upstream
 
 			while (reponse < 1 && reponse > 2) {
 				
 				System.out.print("\n"+"Commande incorrecte"+"\n"+"1.Attaquer"+"\n" +"2.Utiliser Arme"+"\n");
+=======
+			while (reponse != 1) {
+					
+				System.out.print("\n"+"Commande " +reponse+" incorrecte"+"\n"+"1.Attaquer"+"\n");
+>>>>>>> Stashed changes
 				reponse = sc.nextInt();
 			}
 			
@@ -115,7 +121,11 @@ public class Main {
 		
 		if (event == 'C') {
 			
+<<<<<<< Updated upstream
 			Personnage monstre = new Personnage("vil gobelin", 20, 2);
+=======
+			Personnage monstre = new Personnage("vil gobelin", 15, 1);
+>>>>>>> Stashed changes
 			map.setEvenement(' ', perso.getPositionX(), perso.getPositionY());
 			combat(perso, monstre);
 			
