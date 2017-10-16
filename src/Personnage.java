@@ -61,14 +61,18 @@ public class Personnage {
 		arme = new Arme();
 	}
 	
-
 	//Constructeurs surchargé (Pour les monstres)
-	Personnage(String valeurNom, int valeurVie, int valeurAttaque)
-	{
+	Personnage(String valeurNom, int valeurVie, String nomArme, int degatsArme, int valeurForce, int valeurAgilite, int valeurDexterite, int valeurResistance){
+		
 		nom = valeurNom;
 		vie = valeurVie;
-		attaque= valeurAttaque;
-		arme = new Arme("Griffe", 5);
+		
+		arme = new Arme(nomArme, degatsArme);
+		
+		force = valeurForce;
+		agilite = valeurAgilite;
+		dexterite = valeurDexterite;
+		resistance = valeurResistance;
 		
 	}
 	
@@ -165,7 +169,7 @@ public class Personnage {
 			/*Pour les degats on a une partie fixe qui prend en compte les degats bruts de l'arme
 			 * Ensuite on a une partie aléatoire qui va de 0 a 25% de la force du personnage
 			 */
-			degats = this.arme.getDegats() + rand.nextInt(this.force * (25 / 100));
+			degats = this.arme.getDegats() + rand.nextInt(Math.round(this.force * 25 / 100));
 			
 			cible.recevoirDegats(degats);
 		

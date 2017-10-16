@@ -5,31 +5,33 @@
  */
 
 import java.util.Scanner; 
+import java.util.Random;
 
 public class Main {
 
 	// programme principal ou vont se dérouler les differentes phases de jeu
 	public static void main(String[] args) {
 		
-		Scanner pause = new Scanner(System.in);
+		Personnage tableauMonstre[] = new Personnage[10];
+		tableauMonstre[0] = new Personnage("vil gobelin", 20, "griffe", 5, 10, 10, 10, 10);
+		tableauMonstre[1] = new Personnage("troll", 60, "gourdin", 8, 20, 5, 5, 20); 
 		
+		Scanner pause = new Scanner(System.in);
 		System.out.print("Bienvenue dans MAD-SKIP RPG Version 0.1 \n");
 
 		System.out.print("Appuyer sur la touche entrée....");
-
 		pause.nextLine();
-		
 		
 		Personnage personnage = new Personnage();
 		Map map = new Map();		
 		map.setCarte('X', personnage.getPositionX(), personnage.getPositionY());
 		
-			
+		
 		//Boucle principale du jeu
 		while(personnage.enVie()) {
 			
 			Action(personnage,map);
-			Evenement(personnage,map);
+			Evenement(personnage,map,tableauMonstre);
 		}
 		
 		System.out.print("\n--"+" Game Over "+"--\n");
@@ -54,16 +56,11 @@ public class Main {
 			System.out.print("2.Boire potion"+"\n");
 			reponse = sc.nextInt();
 			
-<<<<<<< Updated upstream
 
 			while (reponse < 1 && reponse > 2) {
 				
 				System.out.print("\n"+"Commande incorrecte"+"\n"+"1.Attaquer"+"\n" +"2.Utiliser Arme"+"\n");
-=======
-			while (reponse != 1) {
-					
-				System.out.print("\n"+"Commande " +reponse+" incorrecte"+"\n"+"1.Attaquer"+"\n");
->>>>>>> Stashed changes
+
 				reponse = sc.nextInt();
 			}
 			
@@ -115,17 +112,17 @@ public class Main {
 	/*Cette fonction gere le déclenchement des événement lorsque le joueur se déplace sur la map, 
 	 * celle ci prend en paramétre un objet de type personnage ( le joueur ) et un objet de type Map ( la carte du jeu)
 	 */
-	static void Evenement(Personnage perso, Map map) {
+	static void Evenement(Personnage perso, Map map, Personnage[] tableauPersonnage) {
 		
 		char event = map.getEvenement(perso.getPositionX(), perso.getPositionY());
 		
 		if (event == 'C') {
 			
-<<<<<<< Updated upstream
-			Personnage monstre = new Personnage("vil gobelin", 20, 2);
-=======
-			Personnage monstre = new Personnage("vil gobelin", 15, 1);
->>>>>>> Stashed changes
+			Random rand = new Random();
+			
+			int indiceMonstre = rand.nextInt(2);
+			Personnage monstre = tableauPersonnage[indiceMonstre];
+
 			map.setEvenement(' ', perso.getPositionX(), perso.getPositionY());
 			combat(perso, monstre);
 			
