@@ -45,7 +45,7 @@ public class Personnage {
 		vieMax= 40;
 		vie = vieMax;
 		
-		attaque = 5;
+		attaque = 6;
 		niveau = 1;
 		experience = 0;
 		experienceMax=1000;
@@ -169,7 +169,7 @@ public class Personnage {
 			/*Pour les degats on a une partie fixe qui prend en compte les degats bruts de l'arme
 			 * Ensuite on a une partie aléatoire qui va de 0 a 25% de la force du personnage
 			 */
-			degats = this.arme.getDegats() + rand.nextInt(Math.round(this.force * 25 / 100));
+			degats = this.arme.getDegats() + rand.nextInt(Math.round(this.force * 25 / 100)+1);
 			
 			cible.recevoirDegats(degats);
 		

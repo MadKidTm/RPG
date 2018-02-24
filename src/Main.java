@@ -12,9 +12,12 @@ public class Main {
 	// programme principal ou vont se dérouler les differentes phases de jeu
 	public static void main(String[] args) {
 		
+		DataBaseRPG.selectMonstre("1");
+		
 		Personnage tableauMonstre[] = new Personnage[10];
 		tableauMonstre[0] = new Personnage("vil gobelin", 20, "griffe", 5, 10, 10, 10, 10);
-		tableauMonstre[1] = new Personnage("troll", 60, "gourdin", 8, 20, 5, 5, 20); 
+		tableauMonstre[1] = new Personnage("troll", 45, "gourdin", 8, 20, 5, 5, 20); 
+		tableauMonstre[2] = new Personnage("fée maléfique", 15, "Poudre magique", 5, 5, 500, 10, 0 );
 		
 		Scanner pause = new Scanner(System.in);
 		System.out.print("Bienvenue dans MAD-SKIP RPG Version 0.1 \n");
@@ -120,8 +123,8 @@ public class Main {
 			
 			Random rand = new Random();
 			
-			int indiceMonstre = rand.nextInt(2);
-			Personnage monstre = tableauPersonnage[indiceMonstre];
+			int indiceMonstre = rand.nextInt(3);
+			Personnage monstre = tableauPersonnage[2];
 
 			map.setEvenement(' ', perso.getPositionX(), perso.getPositionY());
 			combat(perso, monstre);
